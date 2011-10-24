@@ -1,0 +1,62 @@
+highlighter-minor-mode
+
+highlighter-minor-mode is an Emacs minor mode to assist with log analysis. It
+brings many features from Mandiant Highlighter 
+<http://www.mandiant.com/products/free_software/highlighter/> to Emacs.  This is 
+particularly relevant to Linux users, who may find it difficult to run the .NET
+Highlighter binary.
+
+
+highlighter-minor-mode accepts four input types:
+
+  type               shortcut
+  -------------      --------
+  regex pattern      p
+  fixed string       t
+  current word       w
+  selection          s
+
+
+Three operations can be applied to each input type:
+
+  operation          shortcut
+  ----------         --------
+  include-           i
+  exclude-           x
+  highlight-         h
+
+
+highlighter-minor-mode operations are prefixed with hl-mode-. You can build each
+supported function by concatenating the prefix, operation, and input type. For
+example, 
+
+  To include lines that contain the current word:
+  hl-mode-include-word
+
+  To remove lines that contain the current selection:
+  hl-mode-exclude-selection
+
+
+highlighter-minor-mode keybindings follow the form: 
+
+  C-hC-lC-<op. shortcut>C-<in. shortcut>
+    ^  ^
+    |  |
+    +--+-- (HighLighter)
+
+For example,
+
+  To include lines that contain the current word:
+  C-hC-lC-iC-w
+
+  To remove lines that contain the current selection:
+  C-hC-lC-xC-s
+
+
+All highlights can be removed using hl-mode-highlight-clear, or C-hC-lC-c.
+
+
+highlighter-minor-mode saves a temporary file when you enter the minor mode, and
+restores the file when you exit the mode.  This way, you don't have to worry 
+about destructive edits.
+
